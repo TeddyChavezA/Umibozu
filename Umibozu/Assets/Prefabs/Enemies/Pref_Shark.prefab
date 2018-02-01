@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 212252959100982834}
   - component: {fileID: 50423766272279730}
   - component: {fileID: 70249069709694444}
-  - component: {fileID: 114205386127385356}
   - component: {fileID: 114487563895111208}
+  - component: {fileID: 114348843041950978}
   m_Layer: 0
   m_Name: Pref_Shark
   m_TagString: Shark
@@ -37,13 +37,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1384339362200234}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.004828758, w: 0.9999884}
+  m_LocalPosition: {x: -20.81, y: -0.05, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.55300003}
 --- !u!50 &50423766272279730
 Rigidbody2D:
   serializedVersion: 4
@@ -73,13 +73,13 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.037674904, y: -0.1657691}
-  m_Size: {x: 5.12, y: 5.12}
+  m_Offset: {x: 0.012245179, y: -0.7331836}
+  m_Size: {x: 0.40471545, y: 1.4716511}
   m_Direction: 0
---- !u!114 &114205386127385356
+--- !u!114 &114348843041950978
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -95,12 +95,12 @@ MonoBehaviour:
   enemyMovementSpeed: 2.5
   rotationSpeed: 180
   target: {fileID: 0}
-  startWaitTime: 1
+  startWaitTime: 2
   moveSpot: {fileID: 0}
-  minX: 0
-  maxX: 0
-  minY: 0
-  maxY: 0
+  minX: -30
+  maxX: -11
+  minY: -8
+  maxY: 9
 --- !u!114 &114487563895111208
 MonoBehaviour:
   m_ObjectHideFlags: 1

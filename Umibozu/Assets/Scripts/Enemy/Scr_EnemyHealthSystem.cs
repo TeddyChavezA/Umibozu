@@ -8,7 +8,7 @@ public class Scr_EnemyHealthSystem : MonoBehaviour {
     private float damage = 0;
     //TODO: Add public float damage to use in other scripts for damage
 
-	void OnTriggerEnter2D(Collider2D other)
+	void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Projectile"))
         {
