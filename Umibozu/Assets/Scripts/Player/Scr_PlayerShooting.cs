@@ -39,8 +39,10 @@ public class Scr_PlayerShooting : MonoBehaviour {
         GameObject arrow = Instantiate(projectilePrefab);
         arrow.transform.rotation = gameObject.transform.localRotation;
         arrow.transform.position = gameObject.transform.position;
-        arrow.GetComponent<Rigidbody2D>().velocity = new Vector2(mousePosition.x * moveSpeed, mousePosition.y * moveSpeed);
-
+        
+        arrow.GetComponent<Rigidbody2D>().velocity = new Vector2((mousePosition.x-transform.position.x) * moveSpeed, (mousePosition.y - transform.position.y) * moveSpeed);
+        arrow.GetComponent<Rigidbody2D>().velocity.Normalize();
+ 
         //Raycast firing
         /*RaycastHit2D hit = Physics2D.Raycast(firePointPosition, (mousePosition - firePointPosition), 100, whatToHit);
         Debug.DrawLine(firePointPosition, (mousePosition - firePointPosition) * 100);
