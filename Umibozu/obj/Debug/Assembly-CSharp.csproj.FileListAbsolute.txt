@@ -1,0 +1,2 @@
+C:\Users\JayHr\Documents\Umibozu\Umibozu\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\JayHr\Documents\Umibozu\Umibozu\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
