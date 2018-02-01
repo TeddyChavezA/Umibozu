@@ -50,6 +50,7 @@ public class Scr_PlayerHealthSystem : MonoBehaviour {
 
         if (currentHealth <= 0)
         {
+            gameObject.SetActive(false);
             //TODO: Play death animation
             TriggerLoss();
         }

@@ -65,3 +65,6 @@ TagManager:
   - name: Particles
     uniqueID: 815289767
     locked: 0
+  - name: GUI
+    uniqueID: 773971355
+    locked: 0

@@ -10,11 +10,13 @@ public class Scr_PlayerOilSystem : MonoBehaviour {
     public float oilDrain;
     private float currentOil;
     private float oilRefill;
+    private Transform spotLight;
 
 	// Use this for initialization
 	void Start () {
         currentOil = maxOil;
         InvokeRepeating("DrainOil", 1, 2);
+        spotLight = transform.Find("Obj_Spotlight");
 	}
 	
 	// Update is called once per frame
@@ -38,6 +40,7 @@ public class Scr_PlayerOilSystem : MonoBehaviour {
         if (currentOil <= 0)
         {
             //TODO: Shutdown spotlight 
+            spotLight.gameObject.SetActive(false);
             TriggerLoss();
         }
     }

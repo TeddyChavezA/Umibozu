@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_Scenes/Lose Screen.unity
+- path: Assets/_Scenes/Jesper's Playground.unity
   isLoaded: 1
   isActive: 1
