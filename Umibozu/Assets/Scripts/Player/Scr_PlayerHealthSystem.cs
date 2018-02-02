@@ -7,19 +7,37 @@ public class Scr_PlayerHealthSystem : MonoBehaviour {
 
     public Image healthBar;
     public float maxHealth;
+    public Color damageColor;
     private float currentHealth = 0f;
     private float damage = 0f;
     private float healthRegen = 15.0f;
+    private Color originalColor;
+    private float timerDamageColorChange = 0;
+    float shake = 0;
+    float shakeAmount = 0.7f;
+    float decreaseFactor = 1;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         currentHealth = maxHealth;
+        originalColor = this.GetComponent<SpriteRenderer>().color;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (this.GetComponent<SpriteRenderer>().color != originalColor)
+        {
+            Debug.Log("Color is not original");
+            timerDamageColorChange++;
+            DamageEffect(timerDamageColorChange);
+            GameObject.FindGameObjectWithTag("MainCamera").transform.localPosition = Random.insideUnitSphere * shakeAmount;
+            shake -= Time.deltaTime * decreaseFactor;
+        }
+
+    }
+    
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -44,6 +62,8 @@ public class Scr_PlayerHealthSystem : MonoBehaviour {
 
     void TakeDamage(float damage)
     {
+        Debug.Log("Taking damage!");
+        this.GetComponent<SpriteRenderer>().color = damageColor;
         currentHealth -= damage;
         float calcHealth = currentHealth / maxHealth; //Calculate % of maxHealth for UI
         SetHealth(calcHealth);
@@ -69,9 +89,20 @@ public class Scr_PlayerHealthSystem : MonoBehaviour {
         SetHealth(calcHealth);
     }
 
+    private void DamageEffect(float timer)
+    {
+
+        if (timer > ((1 / Time.deltaTime) / 2))
+        {
+            this.GetComponent<SpriteRenderer>().color = originalColor;
+            timerDamageColorChange = 0;
+            shake = 0;
+        }
+    }
+
     void SetHealth(float myHealth)
     {
-        healthBar.fillAmount = myHealth;
+        //healthBar.fillAmount = myHealth;
     }
 
     void TriggerLoss()
