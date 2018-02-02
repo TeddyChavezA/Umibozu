@@ -6,7 +6,12 @@ public class Scr_Spotlight : MonoBehaviour {
 
     public float rotSpeed;
     public Transform spotlightLight;
-	
+    private Quaternion rot;
+
+    private void Start()
+    {
+        rot = transform.rotation;
+    }
     void Awake()
     {
         spotlightLight = transform.Find("Obj_Spotlight");
@@ -14,7 +19,7 @@ public class Scr_Spotlight : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        Quaternion rot = transform.rotation;
+        
         float z = rot.eulerAngles.z;
        
         if (spotlightLight.gameObject.activeInHierarchy)
