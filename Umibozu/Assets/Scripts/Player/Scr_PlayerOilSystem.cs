@@ -7,42 +7,51 @@ public class Scr_PlayerOilSystem : MonoBehaviour {
 
     public Image oilMeter;
     public float maxOil;
-    public float oilDrain;
+    public float spotlightOilDrain;
+    public float lanternOilDrain;
     private float currentOil;
     private float oilRefill;
-    private Transform spotLight;
+    public Transform spotLight;
 
 	// Use this for initialization
 	void Start () {
         currentOil = maxOil;
-        InvokeRepeating("DrainOil", 1, 2);
-        spotLight = transform.Find("Obj_Spotlight");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        //Only drain oil if spotlight is active
+        if (spotLight.gameObject.activeInHierarchy)
+        {
+            DrainOil(spotlightOilDrain);
+        }
+
+        DrainOil(lanternOilDrain);
 	}
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("OilRefill") && currentOil != maxOil)
+        if (other.gameObject.CompareTag("OilBarrel") && currentOil != maxOil)
         {
-            oilRefill = 25.0f;
+            oilRefill = 20.0f;
             RefillOil(oilRefill);
+            other.gameObject.SetActive(false);
         }
     }
 
-    void DrainOil()
+    void DrainOil(float drain)
     {
-        currentOil -= oilDrain;
+        currentOil -= drain * Time.deltaTime;
+        currentOil = Mathf.Clamp(currentOil, 0, maxOil);
+        float calcOil = currentOil / maxOil; //Calculate % of maxOil for UI
 
         if (currentOil <= 0)
         {
-            //TODO: Shutdown spotlight 
             spotLight.gameObject.SetActive(false);
             TriggerLoss();
+            //Use IEnum to deactivate lantern after a a small period of time
         }
+        SetOil(calcOil);
     }
 
     void RefillOil(float oilRefill)

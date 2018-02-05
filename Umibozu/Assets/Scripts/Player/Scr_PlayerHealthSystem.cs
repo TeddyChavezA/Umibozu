@@ -102,7 +102,7 @@ public class Scr_PlayerHealthSystem : MonoBehaviour {
 
     void SetHealth(float myHealth)
     {
-        //healthBar.fillAmount = myHealth;
+        healthBar.fillAmount = myHealth;
     }
 
     void TriggerLoss()
